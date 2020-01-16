@@ -1,5 +1,40 @@
-.fancy-header {
-    color: purple; /* single line comment */
-    text-decoration: underline;
-
+h1 {
+    text-align: center
 }
+
+h1, h2, h3 {
+    text-decoration: underline;
+}
+
+body {
+    background-image: url("../img/1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Raleway', sans-serif;
+}
+
+ul {
+    list-style: square;
+}
+
+table {
+    padding-top: 10px;
+    padding-left: 150px;
+}
+
+a:link {
+    color: orange;
+}
+
+a:visited {
+    color: blueviolet;
+}
+
+a:hover {
+    color: brown;
+}
+
+a:active {
+    color: aquamarine;
+}
+
