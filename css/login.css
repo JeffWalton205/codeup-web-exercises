@@ -44,7 +44,7 @@ fieldset {
     /* This element must use 100% of the width */
     /* It should have a separation of .5em from elements on top of it and below it*/
     width: 100%;
-    padding: .5em 0;
+    margin: .5em 0;
 
 }
 
@@ -67,8 +67,9 @@ fieldset {
     padding: 8px;
     font-weight: bold;
     color: white;
-    border: 1px lightgray;
+    border: 1px lightgray solid;
 
+    /***** REMEMBER SOLID REGARDING BORDERS!*/
 
 
 }
