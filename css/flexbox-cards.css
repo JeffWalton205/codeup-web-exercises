@@ -68,7 +68,8 @@ a {
 .container {
     /* This is a flex container */
     display: flex;
-    align-items: baseline;
+    /*align-items: baseline; this works too */
+    align-items: center;
 }
 
 .card {

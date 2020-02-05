@@ -55,17 +55,18 @@ body {
 .cover {
     /* flex container */
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /*align-items: center;*/
+    /*justify-content: center;*/
 
 }
 .flex-form {
     /* flex items */
     display: flex;
+    margin: auto; /*instructor version*/
 
 
 }
 .destination {
     /* bigger item */
-    flex-basis: 30%;
+    flex-basis: 15em;
 }
