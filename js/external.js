@@ -21,6 +21,23 @@
 // var sumTotal = (userInputOne * googlePay) + (userInputTwo * AmazonPay) + (userInputThree * fbPay);
 // alert("You're total paycheck is $" + sumTotal);
 
+// var classFull = confirm("Is the class full?");
+// var classTime = confirm("Is the class at 10 AM?");
+// var canSign = !classFull && !classTime;
+// console.log(canSign);
 
-var classTime = confirm("Is your class at 8AM?");
-var classFull = false;
+// ***Instructor Solution!!!***
+// var classIsNotFull = confirm("Class is not full");
+// var noScheduleConflicts = confirm("Schedules do not conflict");
+// var studentEnrolledStatus = classIsNotFull && noScheduleConflicts;
+// alert("Student can enroll: " + studentEnrolledStatus);
+// ***Instructor Solution!!!***
+
+// ***Instructor Solution!!!***
+// var numberOfItems = number(prompt("How many items are you purchasing?"));
+// var offerIsValid = number(prompt("Is the offer valid?"));
+// var isPremiumMember = confirm("Are you a premium member?");
+// var discountAppliedStatus = offerIsValid && (isPremiumMember || numberOfItems > 2);
+// alert("Can use discount: " discountAppliedStatus);
+// ***Instructor Solution!!!***
+
