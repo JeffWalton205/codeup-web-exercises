@@ -20,9 +20,12 @@
 // }
 // console.log(showMultiplicationTable(8));
 
+
+
 // This is how you get a random number between 50 and 100
 // var allCones = Math.floor(Math.random() * 50) + 50;
 // This expression will generate a random number between 1 and 5
+
 // Math.floor(Math.random() * 5) + 1;
 // for (var i = 1; i <= 10; i++) {
 // var r = Math.floor(Math.random() * 200) + 20;
@@ -33,6 +36,28 @@
 // }
 // }
 
+// for (var i = 0; i < 10; i++) {
+//     var randomNumber = Math.floor(Math.random() * 180) + 20;
+//
+//     if (randomNumber = )
+// }
+
+// 1,22,333,4444...
+// for (var i = 1; i < 10; i++) {
+//     console.log(i.toString().repeat(i));
+// }
+
+
+// *************alternative method!!!!!!**************
+// for (var outer = 1; outer < 10; outer++){
+//     var output= "";
+//
+// for (var inner = 1; inner <= outer; inner++){
+//     console.log("Inner loop log");
+//     output += outer;
+// }
+//     console.log(output);
+// }
 
 
 
