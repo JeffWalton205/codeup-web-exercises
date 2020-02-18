@@ -31,7 +31,11 @@
      */
 
     console.log("Hello from " + person.firstName + " " + person.lastName + "!");
-
+    // ********Instructor solution!!!*****
+    person.sayHello = function(){
+        return "Hello from " + this.firstName + " " + this.lastName + "!";
+    };
+    console.log(person.sayHello());
 
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
@@ -66,6 +70,18 @@
         }
     });
 
+    // **********instructor solution!!!!******
+
+    function discountChecker(shoppers) {
+        shoppers.forEach(function (shopper) {
+            if (shopper.amount > 200) {
+                console.log("Shopper " + shopper.name + " has earned a 12% discount by having a cart totalling " + shopper.amount.toFixed(2) + ". After the discount of $" + (shopper.amount * .12).toFixed(2) + " was applied, " + shopper.name + "owes $" + (shopper.amount - (shopper.amount * .12)).toFixed(2) + ".");
+            } else {
+
+            }
+
+    });
+    }
 
 
     /** TODO:
