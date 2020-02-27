@@ -6,6 +6,7 @@
 </head>
 <body>
 
+
 <!--<script type="text/javascript">-->
 <!--    "use strict";-->
 
@@ -28,5 +29,37 @@
 
 <script src="js/jquery-2.2.4.js"></script>
 <script type="text/javascript" src="js/my-custom-javascript.js"></script>"
+<script type="text/javascript">
+    "use strict";
+
+    $('.header').click(function() {
+        $(this).css({
+            "color": "dodgerblue",
+        })
+    });
+
+    $('.body').dblclick(function() {
+        $(this).css({
+            "font-size": "18px",
+        })
+    });
+
+    // $('li').hover(function () {
+    //     $(this).cc({
+    //         ""
+    //
+    //     })
+    // });
+
+    $('li').hover(
+        function() {
+            $(this).css('color', 'red');
+        },
+        function() {
+            $(this).css('color', 'black');
+        }
+    );
+
+</script>
 </body>
 </html>
