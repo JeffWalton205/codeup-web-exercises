@@ -63,6 +63,17 @@
 <audio class="my-audio" src="sound/exclaim.mp3" type="audio/mp3"></audio>
 <script>
     "use strict";
+    $(document).ready(function() {
+        var runAudio = 0;
+
+        function playAudio (playSound) {
+            if (playSound === 0) {
+                $(".my-audio").play();
+                runAudio++;
+            }
+        }
+playAudio(runAudio);
+
     // // var exclaimation = new Audio("sound/Metal Gear Solid - Exclamation Point Sound Effect.mp3");
     // // $(".snake")
     // window.onload = function() {
@@ -70,10 +81,7 @@
     //     document.getElementById('my-audio').play();
     //     // exclaimation.play();
     // // };
-    // // $(document).ready(function() {
-    // //     // $("sound/ ").get(0).play();
-    // //     exclaimation.play();
-    // // });
+    // });
 
 
     // $("#codec").onclick(function () {
