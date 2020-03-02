@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+<style>
+
+    /*#snake {*/
+    /*    position: absolute;*/
+    /*    right: 0px;*/
+    /*    top: 0px;*/
+    /*    z-index: -1;*/
+    /*}*/
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+    }
+
+    #logo {
+        /*margin-left: 41%;*/
+        /*position: relative;*/
+        /*padding-top: 100px;*/
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 19%;
+    }
+
+    #codec {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    .huh {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+
+
+    }
+
+</style>
+
+</head>
+<body>
+
+<!--<div id="snake">-->
+<!--<img src="img/ocelot.png">-->
+<!--</div>-->
+<div id="logo">
+    <img src="img/flat550x550075f.png">
+</div>
+<div id="codec">
+
+    <img src="img/mgs-Snake%20enter%20your%20access%20code.png">
+</div>
+
+
+<script src="js/jquery-2.2.4.js"></script>
+
+<audio class="my-audio" src="sound/exclaim.mp3" type="audio/mp3"></audio>
+<script>
+    "use strict";
+    // // var exclaimation = new Audio("sound/Metal Gear Solid - Exclamation Point Sound Effect.mp3");
+    // // $(".snake")
+    // window.onload = function() {
+    //     // $("sound/ ").get(0).play();
+    //     document.getElementById('my-audio').play();
+    //     // exclaimation.play();
+    // // };
+    // // $(document).ready(function() {
+    // //     // $("sound/ ").get(0).play();
+    // //     exclaimation.play();
+    // // });
+
+
+    // $("#codec").onclick(function () {
+    //     $('.my-audio').get(0).play();
+    // });
+
+
+
+        var konamiCode = ["38", "38", "40", "40", "37", "39", "37", "39", "66", "65", "13"];
+
+        var inputArr = [];
+
+        $(document).keydown(function (event) {
+            // console.log(event.keyCode);
+            inputArr.push(event.keyCode);
+            console.log(inputArr);
+
+            if (inputArr.toString() === konamiCode.toString()) {
+                $('#snake').html('<img class="ocelot" src="img/ilya-brovkin-mgs1-2a.png" alt="ocelot">');
+                $('#logo').html('<img class="huh" src="img/Metal_Gear_Solid_logo.png" alt="huh">');
+                $('#codec').html('<img class="mg" src="img/mgs-Metal%20Gear.png" alt="huh">');
+
+            }
+
+        });
+
+
+
+
+</script>
+</body>
+</html>
