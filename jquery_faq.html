@@ -7,42 +7,121 @@
         .invisible {
             visibility: hidden;
         }
+
+        /*.list {*/
+        /*    visibility: hidden;*/
+        /*}*/
+
+
+
     </style>
 
 </head>
 <body>
+<!--At the top of the page, add a div with two elements, an h1 that reads "Would you like to sign up for our newsletter?" and a span that has an 'x' in it. When the 'x' is clicked, hide the entire div element.-->
+<div id="newsletter">
+    <h1>Would you like to sign up for our newsletter?</h1>
+    <span id="closer">X</span>
+</div>
+
 <h2 class="hider">Click here!</h2>
 <dl>
 <dt>Is there buried treasure?</dt>
     <dd class="invisible">Yes! Legend has it, the Treasure of Ol' Whistler was buried around Phantom Pass. Treasure hunters beware, though, because the Whistler's ghost protects his gold to this very day! </dd>
+<br>
 <dt>Where does Bigfoot live?</dt>
     <dd class="invisible">Several families of Bigfeet have a community around Crystal Cove and the adjacent Copper Cave region of the park. Challenge them to feats of strength if you dare but be forewarned: Bigfeet are known to rip peoples arms and/or legs out of their sockets when they lose!</dd>
+<br>
 <dt>Are there any abandoned mine shafts or wells to look out for?</dt>
     <dd class="invisible">
         All over the place, be sure to keep a constant headcount of your little ones!
     </dd>
+<br>
 <dt>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi aperiam harum id magni nobis obcaecati quas. At est hic magni nihil repellendus, ut voluptatibus. Cum expedita perferendis reiciendis unde?</dt>
     <dd class="invisible">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam blanditiis cupiditate deserunt, dignissimos eos error nam, neque officiis quidem quis quisquam rem repudiandae sapiente tempora voluptatibus! Doloribus fugiat porro ullam.
     </dd>
+<br>
 <dt>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi aperiam harum id magni nobis obcaecati quas. At est hic magni nihil repellendus, ut voluptatibus. Cum expedita perferendis reiciendis unde?</dt>
     <dd class="invisible">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam blanditiis cupiditate deserunt, dignissimos eos error nam, neque officiis quidem quis quisquam rem repudiandae sapiente tempora voluptatibus! Doloribus fugiat porro ullam.
     </dd>
+<br>
 <dt>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi aperiam harum id magni nobis obcaecati quas. At est hic magni nihil repellendus, ut voluptatibus. Cum expedita perferendis reiciendis unde?</dt>
     <dd class="invisible">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam blanditiis cupiditate deserunt, dignissimos eos error nam, neque officiis quidem quis quisquam rem repudiandae sapiente tempora voluptatibus! Doloribus fugiat porro ullam.
     </dd>
 
 </dl>
+<h3 id="lunar" class="h3s">The Surface of the Moon!</h3>
+<ul id="lunarList" class="list">
+    <li>Apollo mission landing sites.</li>
+    <li>Ancient ruins of an alien race.</li>
+    <li>Luna Spire.</li>
+    <li>Lunar 18 - Premier golf course.</li>
+</ul>
+<br>
+<h3 id="martian" class="h3s">Cydonia, Mars!</h3>
+<ul id="martianList" class="list">
+    <li>Ancient ruins of humanity that beggar the imagination.</li>
+    <li>The Face!</li>
+    <li>Martian caverns!</li>
+    <li>Total Recall!</li>
+</ul>
+<br>
+<h3 id="portal" class="h3s">Historial Time Machine!</h3>
+<ul id="portalList" class="list">
+    <li>Watch OJ do it!</li>
+    <li>Count the shooters on the grassy knoll in Dealey Plaza!</li>
+    <li>Shake hands with the visitors in Roswell!</li>
+    <li>Witness the birth of AI and subsequent fall of humanity!</li>
+</ul>
+
+<button id="doIt">Tomfoolery</button>
+
 <script src="js/jquery-2.2.4.js"></script>
 <script>
     $(document).ready(function() {
-        $('.hider').click(function(event) {
-            event.preventDefault();
+        $('.hider').click(function() {
             $('.invisible').toggleClass('invisible');
         });
     });
+
+
+    $("#doIt").click(function () {
+        $('ul').each(function (index) {
+        $(this).children().last().css('background-color', '#FF0');
+        })
+    });
+
+    $("h3").click(function () {
+       $('li').css('font-weight', 'bold');
+    });
+
+    $("li").click(function() {
+        $(this).first().css('color', 'blue');
+
+    });
+
+    $("#closer").click(function() {
+        $('#newsletter').hide();
+    });
+
+
+    $('ul').each( function (){
+        $(this).hide();
+    });
+
+    $(".h3s").click(function () {
+
+        $(this).next().slideToggle(500);
+
+    });
+
+
+
+
+
 </script>
 
 
