@@ -5,26 +5,40 @@
     <title>Weather Map</title>
 
     <!--<link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        #today, #tomorrow, #thirdDay {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
-<div id="today">
-</div>
-<div id="tomorrow">
-</div>
-<div id="thirdDay">
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col" id="today">
+
+        </div>
+        <div class="col" id="tomorrow">
+        </div>
+        <div class="col" id="thirdDay">
+        </div>
+    </div>
 </div>
 <!--// all scripts should go to bottom of body-->
 <!--//but any external links go first-->
 <!--//what I write goes below-->
 <!--<div id='map' style='width: 400px; height: 300px;'></div>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 <!--<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>-->
 <script src="js/keys.js"></script>
 
 <script>
-    // $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936").done(function (data) {
-    //     // console.log(data);
-    // });
+    $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936").done(function (data) {
+        console.log(data);
+    });
 </script>
 <script>
     // mapboxgl.accessToken = mapboxToken;
@@ -33,37 +47,86 @@
     //     style: 'mapbox://styles/mapbox/streets-v9'
     // });
 
-    // function getPosts() {
-    //     $.ajax("data/blog.json").done(function (data) {
-    //         var bucket = "";
-    //         data.forEach(function (item) {
-    //             bucket +=
-    //                 "<h1>" + item.title + "</h1>"
-    //                 + "<h2>" + item.content + "</h2>"
-    //                 + "<h3>" + item.categories.join(", ") + "</h3>";
-    //             $("#posts").html(bucket);
-    //             console.log(bucket);
-    //         });
-    //     });
-    // }
-    //
-    // getPosts();
+    var iconArray = [
+        {
+            name: "clear-day",
+            path: "icon/clear-day.png"
+        },
+        {
+            name: "clear-night",
+            path: "icon/clear-night.png"
+        },
+        {
+            name: "rain",
+            path: "icon/rain.png"
+        },
+        {
+            name: "snow",
+            path: "icon/snow.png"
+        },
+        {
+            name: "sleet",
+            path: "icon/sleet.png"
+        },
+        {
+            name: "wind",
+            path: "icon/wind.png"
+        },
+        {
+            name: "fog",
+            path: "icon/fog.png"
+        },
+        {
+            name: "cloudy",
+            path: "icon/cloudy.png"
+        },
+        {
+            name: "partly-cloudy-day",
+            path: "icon/partly-cloudy-day.png"
+        },
+        {
+            name: "partly-cloudy-night",
+            path: "icon/partly-cloudy-night"
+        }
+    ];
+
+
+
 
     $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936").done(function (data) {
         function getWeather() {
+    function weatherIcon(weather){
+        switch (weather){
+            case 'clear-day':return iconArray[0].path;
+            case 'clear-night':return iconArray[1].path;
+            case 'rain':return iconArray[2].path;
+            case 'snow':return iconArray[3].path;
+            case 'sleet':return iconArray[4].path;
+            case 'wind':return iconArray[5].path;
+            case 'fog':return iconArray[6].path;
+            case 'cloudy':return iconArray[7].path;
+            case 'partly-cloudy-day':return iconArray[8].path;
+            case 'partly-cloudy-night':return iconArray[9].path;
+        }
+    }
             var today =
-                // bucket +=
-                data.daily.data[0].summary + "<br>  Humidity: "
+
+                "Today <br> <br>"
+                + "High: " + data.daily.data[0].temperatureHigh + " Low: " + data.daily.data[0].temperatureLow + "<br>"
+                + data.daily.data[0].summary + "<br>  Humidity: "
                 + data.daily.data[0].humidity + "<br> Wind Speed: "
                 + data.daily.data[0].windSpeed + "<br> Pressure: "
-                + data.daily.data[0].pressure;
+                + data.daily.data[0].pressure + '<img src="' + weatherIcon(data.daily.data[0].icon) + '">';
+
             $("#today").html(today);
             console.log(today);
 
 
             var tomorrow =
-                // bucket +=
-                data.daily.data[1].summary + "<br>  Humidity: "
+
+                "Tomorrow <br> <br>"
+                + "High: " + data.daily.data[1].temperatureHigh + " Low: " + data.daily.data[1].temperatureLow + "<br>"
+                + data.daily.data[1].summary + "<br>  Humidity: "
                 + data.daily.data[1].humidity + "<br> Wind Speed: "
                 + data.daily.data[1].windSpeed + "<br> Pressure: "
                 + data.daily.data[1].pressure;
@@ -72,15 +135,23 @@
 
 
             var thirdDay =
-                // bucket +=
-                data.daily.data[2].summary + "<br>  Humidity: "
+
+                "The Day After Next <br> <br>"
+                + "High: " + data.daily.data[2].temperatureHigh + " Low: " + data.daily.data[2].temperatureLow + "<br>"
+                + data.daily.data[2].summary + "<br>  Humidity: "
                 + data.daily.data[2].humidity + "<br> Wind Speed: "
                 + data.daily.data[2].windSpeed + "<br> Pressure: "
                 + data.daily.data[2].pressure;
             $("#thirdDay").html(thirdDay);
             console.log(thirdDay);
-
         }
+
+
+        //designate area for icon
+        //check icon for each day via darksky
+        //assign corresponding icon to designated area
+
+
         getWeather()
     })
 
