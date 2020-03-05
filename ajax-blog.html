@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="posts">
+<!--    <table id="iPosts">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>Title</th>-->
+<!--            <th>Content</th>-->
+<!--            <th>Categories</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody id="insertPosts"></tbody>-->
+<!--    </table>-->
+
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script>
+
+
+        function getPosts() {
+            $.ajax("data/blog.json").done(function (data) {
+                    var bucket = "";
+                data.forEach(function (item) {
+                    bucket +=
+                         "<h1>" + item.title + "</h1>"
+                        + "<h2>" + item.content + "</h2>"
+                        + "<h3>" + item.categories.join(", ") + "</h3>";
+                    $("#posts").html(bucket);
+                    console.log(bucket);
+                });
+            });
+        }
+
+        getPosts();
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

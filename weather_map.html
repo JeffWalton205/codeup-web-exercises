@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map</title>
+
+    <!--<link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />-->
+</head>
+<body>
+<div id="today">
+</div>
+<div id="tomorrow">
+</div>
+<div id="thirdDay">
+</div>
+<!--// all scripts should go to bottom of body-->
+<!--//but any external links go first-->
+<!--//what I write goes below-->
+<!--<div id='map' style='width: 400px; height: 300px;'></div>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!--<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>-->
+<script src="js/keys.js"></script>
+
+<script>
+    // $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936").done(function (data) {
+    //     // console.log(data);
+    // });
+</script>
+<script>
+    // mapboxgl.accessToken = mapboxToken;
+    // var map = new mapboxgl.Map({
+    //     container: 'map',
+    //     style: 'mapbox://styles/mapbox/streets-v9'
+    // });
+
+    // function getPosts() {
+    //     $.ajax("data/blog.json").done(function (data) {
+    //         var bucket = "";
+    //         data.forEach(function (item) {
+    //             bucket +=
+    //                 "<h1>" + item.title + "</h1>"
+    //                 + "<h2>" + item.content + "</h2>"
+    //                 + "<h3>" + item.categories.join(", ") + "</h3>";
+    //             $("#posts").html(bucket);
+    //             console.log(bucket);
+    //         });
+    //     });
+    // }
+    //
+    // getPosts();
+
+    $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936").done(function (data) {
+        function getWeather() {
+            var today =
+                // bucket +=
+                data.daily.data[0].summary + "<br>  Humidity: "
+                + data.daily.data[0].humidity + "<br> Wind Speed: "
+                + data.daily.data[0].windSpeed + "<br> Pressure: "
+                + data.daily.data[0].pressure;
+            $("#today").html(today);
+            console.log(today);
+
+
+            var tomorrow =
+                // bucket +=
+                data.daily.data[1].summary + "<br>  Humidity: "
+                + data.daily.data[1].humidity + "<br> Wind Speed: "
+                + data.daily.data[1].windSpeed + "<br> Pressure: "
+                + data.daily.data[1].pressure;
+            $("#tomorrow").html(tomorrow);
+            console.log(tomorrow);
+
+
+            var thirdDay =
+                // bucket +=
+                data.daily.data[2].summary + "<br>  Humidity: "
+                + data.daily.data[2].humidity + "<br> Wind Speed: "
+                + data.daily.data[2].windSpeed + "<br> Pressure: "
+                + data.daily.data[2].pressure;
+            $("#thirdDay").html(thirdDay);
+            console.log(thirdDay);
+
+        }
+        getWeather()
+    })
+
+
+</script>
+
+
+</body>
+</html>
