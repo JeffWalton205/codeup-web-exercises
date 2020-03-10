@@ -167,22 +167,22 @@ $(document).ready(function() {
 
     /**************************** LEAVE IN FOR STUDENTS **(********************************/
     /*********************** function to get commas in number *****************************/
-    // function commaThousandsRefactor(number) {
-    //     let numArr = number.toString().split('');
-    //     let numDigits = numArr.length;
-    //     numArr.reverse();
-    //     // 1-3 : no commas
-    //     // 4-6 : 1 comma
-    //     // 7-9 : 2 commas
-    //     // ...   ...
-    //     // 1. 123456789
-    //     // 2. 123456,789
-    //     // 3. 123,456,789
-    //     for(let i=0; i<(numDigits+numDigits%3)/3; i++) {
-    //         numArr.splice(3, 0, ','); //987,654321
-    //         numArr.splice(7, 0, ','); //987,654,321
-    //
-    //     }
+    function commaThousandsRefactor(number) {
+        let numArr = number.toString().split('');
+        let numDigits = numArr.length;
+        numArr.reverse();
+        // 1-3 : no commas
+        // 4-6 : 1 comma
+        // 7-9 : 2 commas
+        // ...   ...
+        // 1. 123456789
+        // 2. 123456,789
+        // 3. 123,456,789
+        for(let i=0; i<(numDigits+numDigits%3)/3; i++) {
+            numArr.splice(3, 0, ','); //987,654321
+            numArr.splice(7, 0, ','); //987,654,321
+
+        }
 
     }
     commaThousandsRefactor(10485);
