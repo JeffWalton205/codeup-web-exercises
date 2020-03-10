@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Weather Map</title>
 
-    <!--<link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />-->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
@@ -15,37 +15,55 @@
 </head>
 <body>
 <br>
-<div class="container">
-    <div class="row">
-        <div class="col" id="today">
-
+    <div class="container">
+        <div class="row">
+            <div class="col" id="today"></div>
+            <div class="col" id="tomorrow"></div>
+            <div class="col" id="thirdDay"></div>
         </div>
-        <div class="col" id="tomorrow">
-        </div>
-        <div class="col" id="thirdDay">
-        </div>
+            <label for="submit"></label>
+            <input placeholder="Latitude" id="latitude" type="text">
+            <input placeholder="Longitude" id="longitude" type="text">
+            <button type="submit" id="submit">Submit</button>
     </div>
-</div>
 <!--// all scripts should go to bottom of body-->
 <!--//but any external links go first-->
 <!--//what I write goes below-->
-<!--<div id='map' style='width: 400px; height: 300px;'></div>-->
+<div id='map' style='width: 800px; height: 600px;'></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-<!--<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>-->
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
 <script src="js/keys.js"></script>
 
 <script>
-    $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936").done(function (data) {
+    var lat = 29.424;
+    var long = -98.493;
+
+    $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + lat + ", " + long).done(function (data) {
         console.log(data);
     });
 </script>
 <script>
-    // mapboxgl.accessToken = mapboxToken;
-    // var map = new mapboxgl.Map({
-    //     container: 'map',
-    //     style: 'mapbox://styles/mapbox/streets-v9'
-    // });
+
+
+
+
+    mapboxgl.accessToken = mapboxToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [long, lat]
+    });
+
+    var markerOptions = {
+        color: "#27468f",
+        draggable: true
+    };
+
+    var marker = new mapboxgl.Marker(markerOptions)
+        .setLngLat([long, lat])
+        .addTo(map);
 
     var iconArray = [
         {
@@ -93,9 +111,11 @@
 
 
 
-    $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936").done(function (data) {
+    $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + long + ", " + lat).done(function (data) {
         function getWeather() {
-    function weatherIcon(weather){
+
+
+            function weatherIcon(weather){
         switch (weather){
             case 'clear-day':return iconArray[0].path;
             case 'clear-night':return iconArray[1].path;
@@ -111,12 +131,12 @@
     }
             var today =
 
-                "Today <br> <br>"
-                + "High: " + data.daily.data[0].temperatureHigh + " Low: " + data.daily.data[0].temperatureLow + "<br>"
+                "Today <br>" + '<img src="' + weatherIcon(data.daily.data[0].icon) + '"> <br>' +
+                "High: " + data.daily.data[0].temperatureHigh + " Low: " + data.daily.data[0].temperatureLow + "<br>"
                 + data.daily.data[0].summary + "<br>  Humidity: "
                 + data.daily.data[0].humidity + "<br> Wind Speed: "
                 + data.daily.data[0].windSpeed + "<br> Pressure: "
-                + data.daily.data[0].pressure + '<img src="' + weatherIcon(data.daily.data[0].icon) + '">';
+                + data.daily.data[0].pressure;
 
             $("#today").html(today);
             console.log(today);
@@ -124,8 +144,8 @@
 
             var tomorrow =
 
-                "Tomorrow <br> <br>"
-                + "High: " + data.daily.data[1].temperatureHigh + " Low: " + data.daily.data[1].temperatureLow + "<br>"
+                "Tomorrow <br>" + '<img src="' + weatherIcon(data.daily.data[1].icon) + '"> <br>' +
+                 "High: " + data.daily.data[1].temperatureHigh + " Low: " + data.daily.data[1].temperatureLow + "<br>"
                 + data.daily.data[1].summary + "<br>  Humidity: "
                 + data.daily.data[1].humidity + "<br> Wind Speed: "
                 + data.daily.data[1].windSpeed + "<br> Pressure: "
@@ -136,8 +156,8 @@
 
             var thirdDay =
 
-                "The Day After Next <br> <br>"
-                + "High: " + data.daily.data[2].temperatureHigh + " Low: " + data.daily.data[2].temperatureLow + "<br>"
+                "The Day After Next <br>" + '<img src="' + weatherIcon(data.daily.data[2].icon) + '"> <br>' +
+                 "High: " + data.daily.data[2].temperatureHigh + " Low: " + data.daily.data[2].temperatureLow + "<br>"
                 + data.daily.data[2].summary + "<br>  Humidity: "
                 + data.daily.data[2].humidity + "<br> Wind Speed: "
                 + data.daily.data[2].windSpeed + "<br> Pressure: "
@@ -147,13 +167,15 @@
         }
 
 
-        //designate area for icon
-        //check icon for each day via darksky
-        //assign corresponding icon to designated area
+    $('#submit').click(function(){
+        lat = $('#latitude').val();
+        long = $('#longitude').val();
+    });
+
 
 
         getWeather()
-    })
+    });
 
 
 </script>
