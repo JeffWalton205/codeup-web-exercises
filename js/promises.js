@@ -29,11 +29,16 @@ function githubInfo (userName) {
             return response.json();
         })
         // .then(response => response.json())
-        .then(githubData => console.log(githubData));
+        .then(function(githubData) {
+            console.log(githubData)
+            let userName = githubData[0].actor.login;
+            console.log(`${userName} ${githubData[0].created_at}`);
+        })
+
+        // console.log(`${userName} ${githubData[0].created_at}`);
 
 }
 githubInfo("jeffwalton205")
-
 
 
 
