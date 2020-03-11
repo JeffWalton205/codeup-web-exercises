@@ -52,8 +52,16 @@ let avgYears = years / users.length;
 console.log(years);
 console.log(avgYears);
 
-const longEmail = users.reduce((emails, person) => {
-    return person.email;
-}, 0);
-console.log(longEmail.length);
+// const longEmail = users.reduce((emails, person) => {
+//     return person.email;
+// }, 0);
+// console.log(longEmail.length);
 
+let longestEmail = users.reduce((longest, user) => {
+    if (user.email.length > longest.length) {
+        return user.email;
+    } else {
+        return longest;
+    }
+}, "");
+console.log(longestEmail);
